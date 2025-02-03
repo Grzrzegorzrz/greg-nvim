@@ -2,7 +2,7 @@
 
 require("config.remap")
 require("config.lazy")
-require("config.ascii")
+require("config.alpha")
 
 -- hyprlang support
 vim.filetype.add({
@@ -38,7 +38,7 @@ vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.hidden = true
-vim.opt.cmdheight = 0  -- hides commandline
+vim.opt.cmdheight = 0  -- 0 hides commandline
 
 -- nvim-tree
 require("nvim-tree").setup({

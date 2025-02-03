@@ -3,6 +3,14 @@ if not status_ok then
  return
 end
 
+Hyprland = false
+
+if vim.loop.os_uname().sysname ~= "Windows" then
+  if io.popen('echo $XDG_CURRENT_DESKTOP'):read() == 'Hyprland' then
+    Hyprland = true
+  end
+end
+
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
 [[   __    __                   __     __ __                ]],
@@ -16,15 +24,22 @@ dashboard.section.header.val = {
 [[   \▓▓   \▓▓ \▓▓▓▓▓▓▓ \▓▓▓▓▓▓     \▓    \▓▓\▓▓  \▓▓  \▓▓  ]],
 }
 
- dashboard.section.buttons.val = {
+local buttons = {
    dashboard.button("y", "  Yazi", ":Yazi <CR>"),
    dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
    dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
    dashboard.button("r", "󰦛  Recently used files", ":Telescope oldfiles <CR>"),
    dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-   dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
+   dashboard.button("c", "  Neovim Configuration", ":e ~/.config/nvim/init.lua<CR>"),
+   dashboard.button("h", "  Hyprland Configuration", ":e ~/.config/hypr/hyprland.conf<CR>"),
    dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
 }
+
+if Hyprland ~= true then
+  table.remove(buttons, 7)
+end
+
+dashboard.section.buttons.val = buttons
 
 local function footer()
  math.randomseed(os.time())
