@@ -1,7 +1,7 @@
-vim.env.PATH = vim.env.PATH .. '/usr/lib/jdt-language-server-latest/bin'
+--vim.env.PATH = vim.env.PATH .. '/usr/lib/jdt-language-server-latest/bin'
 
-require("config.remap")
 require("config.lazy")
+require("config.remap")
 require("config.ascii")
 
 -- hyprlang support
@@ -71,6 +71,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- misc plugin setups
+require('Comment').setup()
 require('mason').setup()
 require("nvim-tree").setup({
   sort = {
