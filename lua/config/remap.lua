@@ -1,15 +1,36 @@
 -- the ONLY acceptable leader
 vim.g.mapleader = " "
 
--- line splitting and joining
-vim.keymap.set("n", "J", "mzJ`z") -- join lines, keep cursor pos
-vim.keymap.set("n", "<C-j>", "J") -- join lines
-vim.keymap.set("n", "K", "mwi<Enter><ESC>`w") -- split line, keep cursor pos
-vim.keymap.set("n", "<C-k>", "i<Enter><ESC>") -- split line
+-- line splitting and joining resp.
+vim.keymap.set("n", "K", "mwi<Enter><ESC>`w") -- keep cursor pos
+vim.keymap.set("n", "<C-k>", "i<Enter><ESC>")
+vim.keymap.set("n", "J", "mzJ`z") -- keep cursor pos
+vim.keymap.set("n", "<C-j>", "J")
 
 vim.keymap.set("i", "}", "}<ESC>==a") -- auto format end curly
 vim.keymap.set("n", "\\", "<CR>") -- iso keyboard :pensive:
                                   -- remove if not using iso keyboard
+
+-- toggle line wrapping
+vim.keymap.set("n", "<leader>w", function()
+    if vim.o.wrap == true then
+      vim.opt.wrap = false
+    else
+      vim.opt.wrap = true
+    end
+end)
+
+-- quick macro
+vim.keymap.set("n", "<C-Q>", "qk")
+vim.keymap.set("n", "q<C-Q>", "qk")
+
+-- scroll screen up/down
+vim.keymap.set("n", "<C-N>", "<C-E>")
+vim.keymap.set("n", "<C-P>", "<C-Y>")
+
+-- scroll screen left/right
+vim.keymap.set("n", "<C-F>", "40zl")
+vim.keymap.set("n", "<C-B>", "40zh")
 
 -- quick split window vertically
 vim.keymap.set("n", "<C-s>", "<C-w><C-v>")

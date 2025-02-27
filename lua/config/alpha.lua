@@ -1,3 +1,6 @@
+local theta = require("alpha.themes.theta")
+theta.mru_opts.autocd = true
+
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
  return
@@ -25,14 +28,41 @@ dashboard.section.header.val = {
 }
 
 local buttons = {
-   dashboard.button("y", "  Yazi", ":Yazi <CR>"),
-   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-   dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
-   dashboard.button("r", "󰦛  Recently used files", ":Telescope oldfiles <CR>"),
-   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-   dashboard.button("c", "  Neovim Configuration", ":e ~/.config/nvim/init.lua<CR>"),
-   dashboard.button("h", "  Hyprland Configuration", ":e ~/.config/hypr/hyprland.conf<CR>"),
-   dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
+  {
+    type = "group",
+    val = {
+      dashboard.button("y", "  Yazi", ":Yazi <CR>"),
+      dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+      dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
+      dashboard.button("r", "󰦛  Recently used files", ":Telescope oldfiles <CR>"),
+      dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+      dashboard.button("n", "  Neovim Configuration", ":e ~/.config/nvim/init.lua <CR> :cd %:p:h <CR>"),
+      dashboard.button("h", "  Hyprland Configuration", ":e ~/.config/hypr/hyprland.conf <CR> :cd %:p:h <CR>"),
+      dashboard.button("a", "󰀫  Alpha", ":e ~/.config/nvim/lua/config/alpha.lua <CR> :cd %:p:h <CR>"),
+      dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
+    },
+    opts = {
+      spacing = 1
+    }
+  },
+
+  {
+    type = "text",
+    val = "Recent files",
+    opts = {
+      hl = "SpecialComment",
+      shrink_margin = false,
+      position = "center",
+    },
+  },
+
+  {
+    type = "group",
+    val = function()
+      return { theta.mru(0, nil, 7, theta.mru_opts) } -- start, cwd, # files, opts
+    end,
+    opts = { shrink_margin = false },
+  },
 }
 
 if Hyprland ~= true then
@@ -42,18 +72,18 @@ end
 dashboard.section.buttons.val = buttons
 
 local function footer()
- math.randomseed(os.time())
+  math.randomseed(os.time())
 
- -- footer pool
- local footer_values = {
-  "Still T.L.E.",
-  "Remember that grades are more important than mental health <3",
-  "I use Neovim btw",
-  "I will never get my nvim conf time back",
-  "Almost as good as Emacs",
- }
+  -- footer pool
+  local footer_values = {
+    "Still T.L.E.",
+    "Remember that grades are more important than mental health <3",
+    "I use Neovim btw",
+    "Almost as good as Emacs",
+    "\"Chinese people do porn\"",
+  }
 
- return footer_values[math.random(#footer_values)]
+  return footer_values[math.random(#footer_values)]
 end
 
 dashboard.section.footer.val = footer()
@@ -63,5 +93,5 @@ dashboard.section.footer.opts.hl = "Title"
 dashboard.section.header.opts.hl = "Title"
 dashboard.section.buttons.opts.hl = "Keyword"
 
-dashboard.opts.opts.noautocmd = true
+dashboard.opts.opts.noautocmd = false
 alpha.setup(dashboard.opts)

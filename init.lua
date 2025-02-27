@@ -28,6 +28,7 @@ vim.opt.shiftwidth = 2
 
 vim.opt.iskeyword:remove("_") -- makes "_" a word delimiter
 vim.opt.smartindent = true
+vim.opt.wrap = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -98,4 +99,3 @@ vim.api.nvim_set_hl(0,
   ctermfg=155,
   cterm = {bold=true}
 })
-

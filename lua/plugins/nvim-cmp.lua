@@ -41,7 +41,7 @@ M.config = function()
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
       ["<C-S-tab>"] = cmp.mapping(cmp.mapping.select_prev_item(),{ 'i', 'c' }),
 
-      ["<C-n>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+      ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
       ["<C-tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     }),
