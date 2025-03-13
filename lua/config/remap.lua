@@ -4,6 +4,8 @@ vim.g.mapleader = " "
 -- line splitting and joining resp.
 vim.keymap.set("n", "K", "mwi<Enter><ESC>`w") -- keep cursor pos
 vim.keymap.set("n", "<C-k>", "i<Enter><ESC>")
+-- ^ idea, have keybind that seperates for every instance including and after
+-- current cursor character, excluding \[char]
 vim.keymap.set("n", "J", "mzJ`z") -- keep cursor pos
 vim.keymap.set("n", "<C-j>", "J")
 
@@ -97,6 +99,7 @@ vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Lef
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 
 -- from neoclip
     -- (while in neoclip menu) <cr> -> paste highlighted
