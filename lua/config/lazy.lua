@@ -20,6 +20,21 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.maplocalleader = "\\"
 
+-- I just coppied this from some github issue
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = augroup("autoupdate"),
+    callback = function()
+        if require("lazy.status").has_updates then
+            require("lazy").update({ show = false, })
+        end
+    end,
+})
+--
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
