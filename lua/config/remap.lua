@@ -100,6 +100,7 @@ vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Lef
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
+vim.keymap.set("n", "<leader>r", function() vim.cmd [[Rest run]] end)
 
 -- from neoclip
     -- (while in neoclip menu) <cr> -> paste highlighted
