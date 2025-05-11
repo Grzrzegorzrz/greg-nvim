@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require('lsp-zero').extend_lspconfig({
   sign_text = true,
-  lsp_attach = lsp_attach,
+  -- lsp_attach = lsp_attach,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
@@ -70,7 +70,8 @@ require('lspconfig').vtsls.setup{}
 require('lspconfig').arduino_language_server.setup{}
 require('lspconfig').omnisharp.setup{
   cmd = { "dotnet", "/lib64/omnisharp/OmniSharp.dll" },
-  --on_attach = lsp_attach
+  root_dir = require'lspconfig'.util.root_pattern("*.sln", "*.csproj", ".git"),
+  --on_attach = lsp_attach,
   settings = {
     FormattingOptions = {
       -- Enables support for reading code style, naming convention and analyzer

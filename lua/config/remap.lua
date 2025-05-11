@@ -25,6 +25,7 @@ end)
 -- quick macro
 vim.keymap.set("n", "<C-Q>", "qk")
 vim.keymap.set("n", "q<C-Q>", "qk")
+-- tip: usable in visual line mode
 
 -- scroll screen up/down
 vim.keymap.set("n", "<C-N>", "<C-E>")
@@ -82,14 +83,13 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- (pasting in visual mode doesn't override the default yank buffer)
 vim.keymap.set("v", "p", "\"_dP")
 
--- asbjornHaland's system clipboard map
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")    -- doesn't seem to work like Y atm
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("v", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>P", "\"+P")
+-- system clipboard map
+vim.keymap.set({ 'n', 'v', 'i'}, "<A-y>", "\"+y")
+vim.keymap.set({ 'n', 'v', 'i'}, "<A-Y>", "\"+Y") -- doesn't seem to work like Y atm
+vim.keymap.set({ 'n', 'v', 'i'}, "<A-p>", "\"+p")
+vim.keymap.set({ 'n', 'v', 'i'}, "<A-P>", "\"+P")
 
+-- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
 -- primeagen's rename all occurences, modded
