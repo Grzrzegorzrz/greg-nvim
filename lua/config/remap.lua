@@ -84,10 +84,15 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "p", "\"_dP")
 
 -- system clipboard map
-vim.keymap.set({ 'n', 'v', 'i'}, "<A-y>", "\"+y")
-vim.keymap.set({ 'n', 'v', 'i'}, "<A-Y>", "\"+Y") -- doesn't seem to work like Y atm
-vim.keymap.set({ 'n', 'v', 'i'}, "<A-p>", "\"+p")
-vim.keymap.set({ 'n', 'v', 'i'}, "<A-P>", "\"+P")
+vim.keymap.set({ 'n', 'v' }, "<A-y>", "\"+y") -- TODO: ignore following Alt key
+vim.keymap.set('i', "<A-y>", "<ESC>\"+y")
+vim.keymap.set({ 'n', 'v' }, "<A-Y>", "\"+Y") -- doesn't seem to work like Y atm
+vim.keymap.set('i', "<A-Y>", "<ESC>\"+Y")
+
+vim.keymap.set({ 'n', 'v' }, "<A-p>", "\"+p")
+vim.keymap.set('i', "<A-p>", "<ESC>\"+p")
+vim.keymap.set({ 'n', 'v' }, "<A-P>", "\"+P")
+vim.keymap.set('i', "<A-P>", "<ESC>\"+P")
 
 -- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
