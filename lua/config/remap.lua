@@ -84,7 +84,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "p", "\"_dP")
 
 -- system clipboard map
-vim.keymap.set({ 'n', 'v' }, "<A-y>", "\"+y") -- TODO: ignore following Alt key
+vim.keymap.set({ 'n', 'v' }, "<A-y>", "\"+y")
 vim.keymap.set('i', "<A-y>", "<ESC>\"+y")
 vim.keymap.set({ 'n', 'v' }, "<A-Y>", "\"+Y") -- doesn't seem to work like Y atm
 vim.keymap.set('i', "<A-Y>", "<ESC>\"+Y")
@@ -97,9 +97,9 @@ vim.keymap.set('i', "<A-P>", "<ESC>\"+P")
 -- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
--- primeagen's rename all occurences, modded
-vim.keymap.set("n", "<leader>ciw", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>") -- ngl I don't remember what I changed in this one
+-- rename all occurences
+vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+-- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
@@ -108,9 +108,10 @@ vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 vim.keymap.set("n", "<leader>r", function() vim.cmd [[Rest run]] end)
 
 -- from neoclip
-    -- (while in neoclip menu) <cr> -> paste highlighted
-    -- (while in neoclip menu) <c-cr> -> select highlighted
+    -- (while in neoclip menu) <CR> -> paste highlighted
+    -- (while in neoclip menu) <A-CR> -> select highlighted
 
 -- from telescope.lua
     -- leader ff to find file
+    -- leader fr to find recent file
     -- leader fe to find word
