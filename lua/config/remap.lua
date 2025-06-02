@@ -31,6 +31,10 @@ vim.keymap.set("n", "q<C-Q>", "qk")
 vim.keymap.set("n", "<C-N>", "<C-E>")
 vim.keymap.set("n", "<C-P>", "<C-Y>")
 
+-- ctrl backspace/delete functionality
+vim.keymap.set("i", "<C-Backspace>", "<ESC>vbc")
+vim.keymap.set("i", "<C-Del>", "<ESC>lvec")
+
 -- scroll screen left/right
 vim.keymap.set("n", "<C-F>", "40zl")
 vim.keymap.set("n", "<C-B>", "40zh")
