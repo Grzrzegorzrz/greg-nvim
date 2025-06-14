@@ -28,8 +28,10 @@ vim.keymap.set("n", "q<C-Q>", "qk")
 -- tip: usable in visual line mode
 
 -- scroll screen up/down
-vim.keymap.set("n", "<C-N>", "<C-E>")
-vim.keymap.set("n", "<C-P>", "<C-Y>")
+vim.keymap.set({ "n", "v" }, "<C-N>", "<C-E>")
+vim.keymap.set({ "n", "v" }, "<C-P>", "<C-Y>")
+vim.keymap.set({ "n", "v" }, "<CS-N>", "10<C-E>")
+vim.keymap.set({ "n", "v" }, "<CS-P>", "10<C-Y>")
 
 -- ctrl backspace/delete functionality
 vim.keymap.set("i", "<C-Backspace>", "<ESC>vbc")
@@ -110,6 +112,8 @@ vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 vim.keymap.set("n", "<leader>r", function() vim.cmd [[Rest run]] end)
+-- open terminal in the directory of the file
+-- vim.keymap.set({"t", "n"}, "<A-/>", function() vim.cmd [[ToggleTerm dir=%:p:h<CR>]] end)
 
 -- from neoclip
     -- (while in neoclip menu) <CR> -> paste highlighted

@@ -80,7 +80,6 @@ local function footer()
     "Remember that grades are more important than mental health <3",
     "I use Neovim btw",
     "Almost as good as Emacs",
-    "\"Chinese people do porn\"",
   }
 
   return footer_values[math.random(#footer_values)]
