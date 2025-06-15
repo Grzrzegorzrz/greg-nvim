@@ -35,27 +35,11 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.hlsearch = true -- <C-l> to clear highlighting
 vim.opt.incsearch = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 0
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.hidden = true
 vim.opt.cmdheight = 0  -- 0 hides commandline
-
--- nvim-tree
-require("nvim-tree").setup({
-  sort = {
-    sorter = "case_sensitive",
-  },
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = false,
-  },
-})
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -63,7 +47,6 @@ vim.g.loaded_netrwPlugin = 1
 -- misc plugin setups
 require('Comment').setup()
 require('mason').setup()
-
 require("config.colours")
 
 -- quickscope
