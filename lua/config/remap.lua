@@ -107,6 +107,32 @@ vim.keymap.set("i", "<C-c>", "<ESC>")
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
+-- I couldn't get the prettier.nvim extension working so I'm just using this
+vim.keymap.set("n", "<leader>p", function()
+
+  local two_indent = { "css", "graphql", "html", "javascriptreact", "json", "less", "markdown", "scss", "typescript", "typescriptreact", "yaml" }
+  local four_indent = { "javascript" }
+  local curr_file = vim.bo.filetype
+
+  for index, file in ipairs(two_indent) do
+    if file == curr_file then
+      vim.cmd("w")
+      vim.cmd("silent !prettier --write %")
+      vim.cmd("edit!") -- reload the buffer to reflect formatted file
+      break
+    end
+  end
+
+  for index, file in ipairs(four_indent) do
+    if file == curr_file then
+      vim.cmd("w")
+      vim.cmd("silent !prettier --tab-width 4 --write %")
+      vim.cmd("edit!") -- reload the buffer to reflect formatted file
+      break
+    end
+  end
+end)
+
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
