@@ -110,23 +110,13 @@ vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Lef
 -- I couldn't get the prettier.nvim extension working so I'm just using this
 vim.keymap.set("n", "<leader>p", function()
 
-  local two_indent = { "css", "graphql", "html", "javascriptreact", "json", "less", "markdown", "scss", "typescript", "typescriptreact", "yaml" }
-  local four_indent = { "javascript" }
+  local files = { "javascript" , "css", "graphql", "html", "javascriptreact", "json", "less", "markdown", "scss", "typescript", "typescriptreact", "yaml" }
   local curr_file = vim.bo.filetype
 
-  for index, file in ipairs(two_indent) do
+  for index, file in ipairs(files) do
     if file == curr_file then
       vim.cmd("w")
       vim.cmd("silent !prettier --write %")
-      vim.cmd("edit!") -- reload the buffer to reflect formatted file
-      break
-    end
-  end
-
-  for index, file in ipairs(four_indent) do
-    if file == curr_file then
-      vim.cmd("w")
-      vim.cmd("silent !prettier --tab-width 4 --write %")
       vim.cmd("edit!") -- reload the buffer to reflect formatted file
       break
     end
