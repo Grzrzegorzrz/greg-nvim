@@ -56,17 +56,4 @@ vim.g["qs_buftype_blacklist"] = {'terminal', 'nofile'}
 vim.g["qs_filetype_blacklist"] = {'text'}
 vim.g['qs_delay'] = 0
 
--- quickscope highlight colours
-vim.api.nvim_set_hl(0, 'QuickScopePrimary', {
-  fg = '#B0E0E6',
-  underline=true,
-  ctermfg=155,
-  cterm = {bold=true}
-})
-vim.api.nvim_set_hl(0,
-'QuickScopeSecondary', {
-  fg = '#e7c3fe',
-  underline=true,
-  ctermfg=155,
-  cterm = {bold=true}
-})
+require("config.highlight")

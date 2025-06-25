@@ -117,7 +117,6 @@ vim.keymap.set("n", "<leader>p", function()
     if file == curr_file then
       vim.cmd("w")
       vim.cmd("silent !prettier --write %")
-      vim.cmd("edit!") -- reload the buffer to reflect formatted file
       break
     end
   end
