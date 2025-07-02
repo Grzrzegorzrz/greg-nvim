@@ -21,7 +21,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- tab to 2 spaces
--- TODO: make tabbing language dependent
 vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
