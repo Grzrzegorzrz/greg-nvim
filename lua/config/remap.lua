@@ -108,19 +108,20 @@ vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Lef
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
 -- I couldn't get the prettier.nvim extension working so I'm just using this
-vim.keymap.set("n", "<leader>p", function()
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = {
+    "*.js", "*.jsx",
+    "*.ts", "*.tsx",
+    "*.css", "*.scss", "*.less",
+    "*.html", "*.graphql",
+    "*.json", "*.yaml", "*.yml",
+    "*.md",
+  },
+  callback = function()
+    vim.cmd("silent !prettier --write %")
+  end,
+})
 
-  local files = { "javascript" , "css", "graphql", "html", "javascriptreact", "json", "less", "markdown", "scss", "typescript", "typescriptreact", "yaml" }
-  local curr_file = vim.bo.filetype
-
-  for index, file in ipairs(files) do
-    if file == curr_file then
-      vim.cmd("w")
-      vim.cmd("silent !prettier --write %")
-      break
-    end
-  end
-end)
 
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
