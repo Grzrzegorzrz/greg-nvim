@@ -1,6 +1,7 @@
 --vim.env.PATH = vim.env.PATH .. '/usr/lib/jdt-language-server-latest/bin'
 
 require("config.remap")
+require("config.autocommands")
 require("config.lazy")
 require("config.alpha")
 
