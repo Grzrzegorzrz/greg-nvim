@@ -107,21 +107,16 @@ vim.keymap.set("i", "<C-c>", "<ESC>")
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
--- I couldn't get the prettier.nvim extension working so I'm just using this
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = {
-    "*.js", "*.jsx",
-    "*.ts", "*.tsx",
-    "*.css", "*.scss", "*.less",
-    "*.html", "*.graphql",
-    "*.json", "*.yaml", "*.yml",
-    "*.md",
-  },
-  callback = function()
-    vim.cmd("silent !prettier --write %")
-  end,
+vim.api.nvim_create_user_command('Redir', function(ctx)
+  local result = vim.api.nvim_exec2(ctx.args, { output = true })
+  local lines = vim.split(result.output, '\n', { plain = true })
+  vim.cmd('new')
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+  vim.opt_local.modified = false
+end, {
+  nargs = '+',
+  complete = 'command'
 })
-
 
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
