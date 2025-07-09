@@ -5,7 +5,8 @@ return {
     config = function()
         require("nvim-surround").setup({
           keymaps = {
-            visual = "s",
+            visual = "<leader>s",
+            normal = "<leader>s",
           }
         })
     end
