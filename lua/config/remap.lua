@@ -15,11 +15,11 @@ vim.keymap.set("n", "\\", "<CR>") -- iso keyboard :pensive:
 
 -- toggle line wrapping
 vim.keymap.set("n", "<leader>w", function()
-    if vim.o.wrap == true then
-      vim.opt.wrap = false
-    else
-      vim.opt.wrap = true
-    end
+  if vim.o.wrap == true then
+    vim.opt.wrap = false
+  else
+    vim.opt.wrap = true
+  end
 end)
 
 -- quick macro
@@ -34,8 +34,8 @@ vim.keymap.set({ "n", "v" }, "<CS-N>", "10<C-E>")
 vim.keymap.set({ "n", "v" }, "<CS-P>", "10<C-Y>")
 
 -- ctrl backspace/delete functionality
-vim.keymap.set("i", "<C-Backspace>", "<ESC>vbc")
-vim.keymap.set("i", "<C-Del>", "<ESC>lvec")
+vim.keymap.set({ "i", "c" }, "<C-Backspace>", "<C-w>")
+vim.keymap.set({ "i", "c" }, "<C-Del>", "<ESC>lvec")
 
 -- scroll screen left/right
 vim.keymap.set("n", "<C-F>", "40zl")
@@ -55,24 +55,24 @@ vim.keymap.set("n", "<leader>l", "<C-W>l")
 vim.keymap.set("i", "{", "{}<ESC>i")
 
 vim.keymap.set("i", "<CR>", function()
-    local r,c = unpack(vim.api.nvim_win_get_cursor(0))
-    local line = vim.api.nvim_get_current_line()
-    if c > 0 and line:sub(c+1, c+1) == '}' then
-        if vim.bo.filetype == "text" or vim.bo.filetype == "" then
-            return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><BS><ESC>k$a<BS>"
-        end
-        return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><ESC>k$a<BS>"
-    else return "<CR>"
+  local r,c = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  if c > 0 and line:sub(c+1, c+1) == '}' then
+    if vim.bo.filetype == "text" or vim.bo.filetype == "" then
+      return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><BS><ESC>k$a<BS>"
     end
+    return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><ESC>k$a<BS>"
+  else return "<CR>"
+  end
 end, { expr = true })
 
 vim.keymap.set("i", "}", function()
-    local r,c = unpack(vim.api.nvim_win_get_cursor(0))
-    local line = vim.api.nvim_get_current_line()
-    if c > 0 and line:sub(c, c) == '{' then
-        return "<Del>}"
-    else return "}"
-    end
+  local r,c = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  if c > 0 and line:sub(c, c) == '{' then
+    return "<Del>}"
+  else return "}"
+  end
 end, { expr = true })
 
 -- primeagen's move commands
@@ -114,8 +114,8 @@ vim.api.nvim_create_user_command('Redir', function(ctx)
   vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
   vim.opt_local.modified = false
 end, {
-  nargs = '+',
-  complete = 'command'
+nargs = '+',
+complete = 'command'
 })
 
 -- plugins:
@@ -124,13 +124,13 @@ vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 vim.keymap.set("n", "<leader>r", function() vim.cmd [[Rest run]] end)
 -- open terminal in the directory of the file
--- vim.keymap.set({"t", "n"}, "<A-/>", function() vim.cmd [[ToggleTerm dir=%:p:h<CR>]] end)
+vim.keymap.set({"t", "n"}, "<C-;>", function() vim.cmd [[ToggleTerm dir=%:p:h<CR>]] end)
 
 -- from neoclip
-    -- (while in neoclip menu) <CR> -> paste highlighted
-    -- (while in neoclip menu) <A-CR> -> select highlighted
+-- (while in neoclip menu) <CR> -> paste highlighted
+-- (while in neoclip menu) <A-CR> -> select highlighted
 
 -- from telescope.lua
-    -- leader ff to find file
-    -- leader fr to find recent file
-    -- leader fe to find word
+-- leader ff to find file
+-- leader fr to find recent file
+-- leader fe to find word
