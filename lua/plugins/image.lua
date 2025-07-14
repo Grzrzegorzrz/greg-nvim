@@ -1,8 +1,11 @@
 return {
-  '3rd/image.nvim',
-  dependencies = { "luarocks.nvim" },
+  "folke/snacks.nvim",
+  ---@type snacks.Config
   opts = {
-    -- backend = "ueberzug",
-    -- processor = "magick_cli",
+    image = {
+      -- your image configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   }
 }
