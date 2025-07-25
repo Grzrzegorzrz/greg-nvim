@@ -89,6 +89,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- (pasting in visual mode doesn't override the default yank buffer)
 vim.keymap.set("v", "p", "\"_dP")
 
+-- do not yank when using c
+vim.keymap.set({ "v", "n" }, "c", "\"_c")
+
 -- system clipboard map
 vim.keymap.set({ 'n', 'v' }, "<A-y>", "\"+y")
 vim.keymap.set('i', "<A-y>", "<ESC>\"+y")
