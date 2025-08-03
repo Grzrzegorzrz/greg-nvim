@@ -51,30 +51,6 @@ vim.keymap.set("n", "<leader>j", "<C-W>j")
 vim.keymap.set("n", "<leader>k", "<C-W>k")
 vim.keymap.set("n", "<leader>l", "<C-W>l")
 
--- auto close curly
-vim.keymap.set("i", "{", "{}<ESC>i")
-
-vim.keymap.set("i", "<CR>", function()
-  local r,c = unpack(vim.api.nvim_win_get_cursor(0))
-  local line = vim.api.nvim_get_current_line()
-  if c > 0 and line:sub(c+1, c+1) == '}' then
-    if vim.bo.filetype == "text" or vim.bo.filetype == "" then
-      return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><BS><ESC>k$a<BS>"
-    end
-    return "a<ESC>viBo<ESC><ESC>i<CR><ESC>viB<ESC><ESC>a<CR><ESC>k$a<BS>"
-  else return "<CR>"
-  end
-end, { expr = true })
-
-vim.keymap.set("i", "}", function()
-  local r,c = unpack(vim.api.nvim_win_get_cursor(0))
-  local line = vim.api.nvim_get_current_line()
-  if c > 0 and line:sub(c, c) == '{' then
-    return "<Del>}"
-  else return "}"
-  end
-end, { expr = true })
-
 -- primeagen's move commands
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
