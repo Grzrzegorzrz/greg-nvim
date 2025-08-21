@@ -42,7 +42,7 @@ local buttons = {
       dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
     },
     opts = {
-      spacing = 1
+      spacing = 0
     }
   },
 
@@ -59,7 +59,7 @@ local buttons = {
   {
     type = "group",
     val = function()
-      return { theta.mru(0, nil, 7, theta.mru_opts) } -- start, cwd, # files, opts
+      return { theta.mru(0, nil, 15, theta.mru_opts) } -- start, cwd, # files, opts
     end,
     opts = { shrink_margin = false },
   },
