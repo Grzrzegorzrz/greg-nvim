@@ -5,25 +5,23 @@ require("config.autocommands")
 require("config.lazy")
 require("config.alpha")
 
--- hyprlang support
-vim.filetype.add({
-  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
-
 -- theme
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
-
-local user = io.popen('whoami'):read("*a"):gsub("%s+", "")
-
-if user ~= "root" then
-  vim.g["gruvbox_material_background"] = "material"
-  vim.g["gruvbox_material_colors_override"] = {fg0 = {'#daccad', '234'}}
-  vim.cmd.colorscheme("gruvbox-material")
+local theme
+if io.popen('whoami'):read("*a"):gsub("%s+", "") == "root" then
+  theme = "retrobox"
 else
-  vim.cmd.colorscheme('unokai')
+  theme = "gruvbox-material"
 end
+
+require("config.theme").set_theme(theme)
+
+-- hyprlang support
+vim.filetype.add({
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
 
 -- enables line numbering
 vim.opt.number = true
@@ -62,7 +60,3 @@ vim.g['qs_delay'] = 0
 -- misc plugin setups
 require('Comment').setup()
 require('mason').setup()
-if user ~= "root" then
-  require("config.colours")
-  require("config.highlight")
-end
