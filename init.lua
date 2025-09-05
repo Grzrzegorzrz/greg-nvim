@@ -13,9 +13,17 @@ vim.filetype.add({
 -- theme
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
-vim.g["gruvbox_material_background"] = "material"
-vim.g["gruvbox_material_colors_override"] = {fg0 = {'#daccad', '234'}}
-vim.cmd([[colorscheme gruvbox-material]])
+
+
+local user = io.popen('whoami'):read("*a"):gsub("%s+", "")
+
+if user ~= "root" then
+  vim.g["gruvbox_material_background"] = "material"
+  vim.g["gruvbox_material_colors_override"] = {fg0 = {'#daccad', '234'}}
+  vim.cmd.colorscheme("gruvbox-material")
+else
+  vim.cmd.colorscheme('unokai')
+end
 
 -- enables line numbering
 vim.opt.number = true
@@ -46,14 +54,15 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.diagnostic.config({ virtual_text = true })
 
--- misc plugin setups
-require('Comment').setup()
-require('mason').setup()
-require("config.colours")
-
 -- quickscope
 vim.g["qs_buftype_blacklist"] = {'terminal', 'nofile'}
 vim.g["qs_filetype_blacklist"] = {'text'}
 vim.g['qs_delay'] = 0
 
-require("config.highlight")
+-- misc plugin setups
+require('Comment').setup()
+require('mason').setup()
+if user ~= "root" then
+  require("config.colours")
+  require("config.highlight")
+end
