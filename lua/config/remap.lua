@@ -97,9 +97,11 @@ nargs = '+',
 complete = 'command'
 })
 
+vim.keymap.set("n", "<leader>G", vim.cmd.OpenGitUrl)
+
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFindFileToggle)
 vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 vim.keymap.set("n", "<leader>r", function() vim.cmd [[Rest run]] end)
 -- open terminal in the directory of the file

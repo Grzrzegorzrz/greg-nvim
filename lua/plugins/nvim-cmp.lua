@@ -34,7 +34,7 @@ M.config = function()
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       --["<leader><CR>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.abort(),
-      ["<C-BS>"] = cmp.mapping.abort(),
+      -- ["<C-BS>"] = cmp.mapping.abort(),
 
       -- up and down movements, pick your poison
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),

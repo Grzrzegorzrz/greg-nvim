@@ -6,7 +6,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     "*.css", "*.scss", "*.less",
     "*.html", "*.graphql",
     "*.json", "*.yaml", "*.yml",
-    "*.md",
   },
   callback = function()
     vim.cmd("silent !prettier --write %")
