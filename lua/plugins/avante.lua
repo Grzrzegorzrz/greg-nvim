@@ -3,10 +3,13 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    hints = { enabled = false },
+    hints = { enabled = true },
     -- behaviour = { },
     -- mappings = { },
     provider = "openai",
+    selection = {
+      hint_display = "none"
+    },
     providers = {
       openai = {
         endpoint = "https://api.openai.com/v1",

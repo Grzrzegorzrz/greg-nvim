@@ -10,9 +10,9 @@ return {
       extensions = {
         undo = {
           -- telescope-undo.nvim config, see below
-          -- mappings = {
-          --   ["<C-r>"] = require("telescope-undo.actions").restore,
-          -- }
+          mappings = {
+            ["<C-r>"] = require("telescope-undo.actions").restore,
+          }
         },
         -- other extensions:
         -- file_browser = { ... }
