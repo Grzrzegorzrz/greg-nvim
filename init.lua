@@ -50,13 +50,7 @@ vim.opt.cmdheight = 0  -- 0 hides commandline
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.diagnostic.config({ virtual_text = true })
-
--- quickscope
-vim.g["qs_buftype_blacklist"] = {'terminal', 'nofile'}
-vim.g["qs_filetype_blacklist"] = {'text'}
-vim.g['qs_delay'] = 0
-
 -- misc plugin setups
 require('Comment').setup()
 require('mason').setup()
+require('colorizer').setup()
