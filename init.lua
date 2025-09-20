@@ -4,6 +4,7 @@ require("config.remap")
 require("config.autocommands")
 require("config.lazy")
 require("config.alpha")
+require("config.git-link")
 
 -- theme
 vim.opt.termguicolors = true
