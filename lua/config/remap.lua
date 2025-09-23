@@ -99,6 +99,55 @@ complete = 'command'
 
 vim.keymap.set("n", "<leader>G", vim.cmd.OpenGitUrl)
 
+-- Obsidian keybinds
+vim.keymap.set({ "n", "v" }, "<leader>o", function()
+  if vim.bo.filetype ~= "markdown" then
+    vim.cmd('edit ~/Documents/obsidian/personal/Welcome.md')
+    vim.api.nvim_set_current_dir('~/Documents/obsidian/')
+
+  else
+    local obsidian_cmds = {
+      ['n'] = {
+        ['l'] = 'links',
+        ['n'] = 'new',
+        ['w'] = 'workspace',
+        ['o'] = 'quick_switch',
+        ['f'] = 'follow_link',
+        ['r'] = 'rename',
+        ['b'] = 'backlinks',
+        [';'] = 'tags',
+        ['\'']= 'search',
+        ['c'] = 'toc',
+        ['m'] = '',
+      },
+      ['v'] = {
+        ['l'] = 'link',
+        ['n'] = 'link_new',
+        ['w'] = 'workspace',
+        ['o'] = 'quick_switch',
+        ['f'] = 'follow_link',
+        ['r'] = 'rename',
+        ['b'] = 'backlinks',
+        [';'] = 'tags',
+        ['\'']= 'search',
+        ['c'] = 'toc',
+        ['m'] = '',
+      }
+    }
+
+    local mode = vim.api.nvim_get_mode().mode
+    local command = vim.fn.nr2char(vim.fn.getchar())
+    local choice = obsidian_cmds[mode][command]
+
+    if choice then
+      vim.cmd('Obsidian ' .. choice)
+    elseif command == 't' then
+      local keys = vim.api.nvim_replace_termcodes("<ESC>gg/tags:<CR>eea <ESC>C<CR><TAB>- ", true, false, true)
+      vim.api.nvim_feedkeys(keys, "n", false)
+    end
+  end
+end)
+
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFindFileToggle)
