@@ -102,8 +102,8 @@ vim.keymap.set("n", "<leader>G", vim.cmd.OpenGitUrl)
 -- Obsidian keybinds
 vim.keymap.set({ "n", "v" }, "<leader>o", function()
   if vim.bo.filetype ~= "markdown" then
-    vim.cmd('edit ~/Documents/obsidian/personal/Welcome.md')
-    vim.api.nvim_set_current_dir('~/Documents/obsidian/')
+    vim.cmd('edit ~/Documents/obsidian/school/index.md')
+    vim.api.nvim_set_current_dir('~/Documents/obsidian/school')
 
   else
     local obsidian_cmds = {
@@ -122,7 +122,6 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
       },
       ['v'] = {
         ['l'] = 'link',
-        ['n'] = 'link_new',
         ['w'] = 'workspace',
         ['o'] = 'quick_switch',
         ['f'] = 'follow_link',
@@ -132,6 +131,10 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
         ['\'']= 'search',
         ['c'] = 'toc',
         ['m'] = '',
+      },
+      ['misc'] = {
+        ['t'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>gg/tags:<CR>eea <ESC>C<CR><TAB>- ", true, false, true), "n", false) end,
+        ['n'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":Obsidian link_new ", true, false, true), 'n', false) end,
       }
     }
 
@@ -141,10 +144,10 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
 
     if choice then
       vim.cmd('Obsidian ' .. choice)
-    elseif command == 't' then
-      local keys = vim.api.nvim_replace_termcodes("<ESC>gg/tags:<CR>eea <ESC>C<CR><TAB>- ", true, false, true)
-      vim.api.nvim_feedkeys(keys, "n", false)
+    elseif obsidian_cmds['misc'][command] then
+      obsidian_cmds['misc'][command]()
     end
+    -- builtin.grep_string({ search = vim.fn.input("Grep CWD > ") });
   end
 end)
 
