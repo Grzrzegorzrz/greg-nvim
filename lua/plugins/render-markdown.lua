@@ -5,6 +5,7 @@ return {
   ---@type render.md.UserConfig
   opts = {
     file_types = { "markdown", "Avante" },
+    completions = { lsp = { enabled = true } },
     heading = {
       backgrounds = {
         -- 'RenderMarkdownH1Bg',
@@ -20,7 +21,20 @@ return {
       enabled = true,
       highlight = 'RenderMarkdownH1',
       icons = { '- ' },
-    }
+    },
+    checkbox = {
+      custom = {
+        question = {
+          raw = '[~]', rendered = '󰜥 ', highlight = 'RenderMarkdownHint', scope_highlight = nil
+        },
+        alert = {
+          raw = '[!]', rendered = '󰳤 ', highlight = 'RenderMarkdownError', scope_highlight = nil
+        },
+        arrow = {
+          raw = '[>]', rendered = '󰧛 ', highlight = 'RenderMarkdownHint', scope_highlight = nil
+        },
+      },
+    },
   },
   ft = { "markdown", "Avante" },
 }
