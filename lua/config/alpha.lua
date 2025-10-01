@@ -32,13 +32,14 @@ local buttons = {
     type = "group",
     val = {
       dashboard.button("y", "  Yazi", ":Yazi <CR>"),
-      dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+      dashboard.button("o", "  Obsidian", ":edit ~/Documents/obsidian/school/index.md<CR>:cd %:p:h<CR>7j"),
+      dashboard.button("a", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
       dashboard.button("r", "󰦛  Recently used files", ":Telescope oldfiles <CR>"),
       dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
       dashboard.button("n", "  Neovim Configuration", ":e ~/.config/nvim/init.lua <CR> :cd %:p:h <CR>"),
       dashboard.button("h", "  Hyprland Configuration", ":e ~/.config/hypr/hyprland.conf <CR> :cd %:p:h <CR>"),
-      dashboard.button("a", "󰀫  Alpha", ":e ~/.config/nvim/lua/config/alpha.lua <CR> :cd %:p:h <CR>"),
+      dashboard.button("A", "󰀫  Alpha", ":e ~/.config/nvim/lua/config/alpha.lua <CR> :cd %:p:h <CR>"),
       dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
     },
     opts = {
@@ -59,14 +60,17 @@ local buttons = {
   {
     type = "group",
     val = function()
-      return { theta.mru(0, nil, 15, theta.mru_opts) } -- start, cwd, # files, opts
+      return { theta.mru(0, nil, 14, theta.mru_opts) } -- start, cwd, # files, opts
     end,
-    opts = { shrink_margin = false },
+    opts = {
+      shrink_margin = false,
+    },
   },
 }
 
+-- TODO: don't hardcode this
 if Hyprland ~= true then
-  table.remove(buttons, 7)
+  table.remove(buttons, 8)
 end
 
 dashboard.section.buttons.val = buttons
