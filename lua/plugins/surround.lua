@@ -6,7 +6,11 @@ return {
         require("nvim-surround").setup({
           keymaps = {
             visual = "<leader>s",
+            visual_line = "<leader>S",
             normal = "<leader>s",
+            normal_cur = "<leader>ss",
+            normal_line = "<leader>S",
+            normal_cur_line = "<leader>SS",
           }
         })
     end
