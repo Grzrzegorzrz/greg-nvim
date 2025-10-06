@@ -15,7 +15,7 @@ return {
   opts = {
     legacy_commands = false,
     ui = {
-      enable = false
+      enable = false,
     },
     workspaces = {
       {

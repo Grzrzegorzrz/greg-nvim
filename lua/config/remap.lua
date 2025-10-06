@@ -42,8 +42,7 @@ vim.keymap.set("n", "<C-F>", "40zl")
 vim.keymap.set("n", "<C-B>", "40zh")
 
 -- quick split window vertically
-vim.keymap.set("n", "<C-s>", "<C-w><C-v>")
-vim.keymap.set("v", "<C-s>", "<C-w><C-v>")
+vim.keymap.set({"n", "v"}, "<C-s>", "<C-w><C-v>")
 
 -- move to window
 vim.keymap.set("n", "<leader>h", "<C-W>h")
@@ -79,8 +78,22 @@ vim.keymap.set('i', "<A-p>", "<ESC>\"+p")
 vim.keymap.set({ 'n', 'v' }, "<A-P>", "\"+P")
 vim.keymap.set('i', "<A-P>", "<ESC>\"+P")
 
+-- paste in insert mode
+vim.keymap.set('i', "<C-r>", "<C-r>\"")
+
 -- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
+
+-- indent in insert mode
+vim.keymap.set("i", "<C-,>", function()
+  local indent = vim.opt.shiftwidth:get();
+  return "<ESC><<" .. indent .. "ha"
+end, { expr = true })
+
+vim.keymap.set("i", "<C-.>", function()
+  local indent = vim.opt.shiftwidth:get();
+  return "<ESC>>>" .. indent .. "la"
+end, { expr = true })
 
 -- rename all occurences
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
@@ -148,7 +161,6 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
     elseif obsidian_cmds['misc'][command] then
       obsidian_cmds['misc'][command]()
     end
-    -- builtin.grep_string({ search = vim.fn.input("Grep CWD > ") });
   end
 end)
 
