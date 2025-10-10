@@ -7,7 +7,7 @@ vim.keymap.set("n", "<C-k>", "i<Enter><ESC>")
 -- ^ idea, have keybind that seperates for every instance including and after
 -- current cursor character, excluding \[char]
 vim.keymap.set("n", "J", "mzJ`z") -- keep cursor pos
-vim.keymap.set("n", "<C-j>", "J")
+vim.keymap.set("n", "<C-j>", "kmzJ`z") -- join upward; move cursor pos up
 
 vim.keymap.set("i", "}", "}<ESC>==a") -- auto format end curly
 vim.keymap.set("n", "\\", "<CR>") -- iso keyboard :pensive:
