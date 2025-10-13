@@ -7,10 +7,6 @@ function M.set_theme(theme)
     vim.g.gruvbox_material_enable_italic = true
     vim.g.gruvbox_material_background = "material"
     vim.g.gruvbox_material_colors_override = {fg0 = {'#daccad', '234'}}
-    theme = { primary = '#B0E0E6', secondary = '#e7c3fe' }
-
-  elseif theme == "retrobox" then
-    theme = { primary = '#95e5a8', secondary = '#e9b2c0'}
 
   end
 
