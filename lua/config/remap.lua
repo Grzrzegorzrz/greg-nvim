@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 
 -- line splitting and joining resp.
-vim.keymap.set("n", "K", "mwi<Enter><ESC>`w") -- keep cursor pos
-vim.keymap.set("n", "<C-k>", "i<Enter><ESC>")
+vim.keymap.set("n", "K", "i<Enter><ESC>") -- keep cursor pos
+vim.keymap.set("n", "<C-k>", "mwi<Enter><ESC>`w")
 -- ^ idea, have keybind that seperates for every instance including and after
 -- current cursor character, excluding \[char]
 vim.keymap.set("n", "J", "mzJ`z") -- keep cursor pos
@@ -35,7 +35,7 @@ vim.keymap.set({ "n", "v" }, "<CS-P>", "10<C-Y>")
 
 -- ctrl backspace/delete functionality
 vim.keymap.set({ "i", "c" }, "<C-Backspace>", "<C-w>")
-vim.keymap.set({ "i", "c" }, "<C-Del>", "<ESC>lvec")
+vim.keymap.set({ "i", "c" }, "<C-Del>", "<ESC>lcw")
 
 -- scroll screen left/right
 vim.keymap.set("n", "<C-F>", "40zl")
@@ -167,7 +167,6 @@ end)
 -- plugins:
 vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFindFileToggle)
-vim.keymap.set("n", "<leader>d", vim.cmd.DiffviewOpen)
 -- open terminal in the directory of the file
 vim.keymap.set({"t", "n"}, "<C-;>", function() vim.cmd [[ToggleTerm dir=%:p:h<CR>]] end)
 
