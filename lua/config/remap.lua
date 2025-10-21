@@ -33,9 +33,29 @@ vim.keymap.set({ "n", "v" }, "<C-P>", "<C-Y>")
 vim.keymap.set({ "n", "v" }, "<CS-N>", "10<C-E>")
 vim.keymap.set({ "n", "v" }, "<CS-P>", "10<C-Y>")
 
--- ctrl backspace/delete functionality
+-- backspace/delete functionalities
 vim.keymap.set({ "i", "c" }, "<C-Backspace>", "<C-w>")
-vim.keymap.set({ "i", "c" }, "<C-Del>", "<ESC>lcw")
+vim.keymap.set({ "i", "c" }, "<C-b>", "<C-w>")
+vim.keymap.set({ "i", "c" }, "<C-Del>", function()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  if col == 0 then
+    return "<ESC>cw"
+  else
+    return "<ESC>lcw"
+  end
+end, { expr = true })
+vim.keymap.set({ "i", "c" }, "<C-f>", function()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  if col == 0 then
+    return "<ESC>cw"
+  else
+    return "<ESC>lcw"
+  end
+end, { expr = true })
+
+vim.keymap.set({ "i", "c" }, "<C-l>", "<C-Del>")
+
+vim.keymap.set("i", "<C-k>", "<ESC>O")
 
 -- scroll screen left/right
 vim.keymap.set("n", "<C-F>", "40zl")
@@ -164,17 +184,6 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
   end
 end)
 
--- plugins:
-vim.keymap.set("n", "<leader>np", function() vim.cmd [[Telescope neoclip]] end)
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFindFileToggle)
--- open terminal in the directory of the file
-vim.keymap.set({"t", "n"}, "<C-;>", function() vim.cmd [[ToggleTerm dir=%:p:h<CR>]] end)
-
 -- from neoclip
 -- (while in neoclip menu) <CR> -> paste highlighted
 -- (while in neoclip menu) <A-CR> -> select highlighted
-
--- from telescope.lua
--- leader ff to find file
--- leader fr to find recent file
--- leader fe to find word

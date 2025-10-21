@@ -16,5 +16,6 @@ return {
         dotfiles = false,
       },
     })
+    vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFindFileToggle)
   end
 }
