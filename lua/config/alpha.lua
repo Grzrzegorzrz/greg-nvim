@@ -32,7 +32,7 @@ local buttons = {
     type = "group",
     val = {
       dashboard.button("y", "  Yazi", ":Yazi <CR>"),
-      dashboard.button("o", "  Obsidian", ":edit ~/Documents/obsidian/school/index.md<CR>:cd %:p:h<CR>7j"),
+      dashboard.button("o", "  Obsidian", ":edit ~/Documents/obsidian/school/index.md<CR>:cd %:p:h<CR>8j:Obsidian workspace school<CR>"),
       dashboard.button("a", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
       dashboard.button("r", "󰦛  Recently used files", ":Telescope oldfiles <CR>"),
