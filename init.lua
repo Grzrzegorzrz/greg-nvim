@@ -47,7 +47,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.hidden = true
 vim.opt.cmdheight = 0  -- 0 hides commandline
-vim.opt.ve = 'block'
+vim.opt.ve = { 'block', 'onemore' }
+vim.diagnostic.enable=true
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -55,4 +56,7 @@ vim.g.loaded_netrwPlugin = 1
 -- misc plugin setups
 require('Comment').setup()
 require('mason').setup()
+require('mason-lspconfig').setup({
+  automatic_enable = false,
+})
 require('colorizer').setup()
