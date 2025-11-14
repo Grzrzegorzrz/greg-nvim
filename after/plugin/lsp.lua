@@ -43,22 +43,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require('lsp-zero').extend_lspconfig({
-  sign_text = true,
-  -- lsp_attach = lsp_attach,
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-})
-
-vim.lsp.enable('lua')
+vim.lsp.enable('lua_ls')
 vim.lsp.enable('jdtls')
 vim.lsp.enable('vtsls')
+vim.lsp.enable('bashls')
+vim.lsp.enable('clangd')
 vim.lsp.enable('arduino_language_server')
-vim.lsp.enable('omnisharp')
+-- Python
+vim.lsp.enable('basedpyright')
+vim.lsp.enable('ruff')
 
-require('lspconfig').lua_ls.setup(require(conf_dir .. 'lua_ls'))
-require('lspconfig').omnisharp.setup(require(conf_dir .. 'omnisharp'))
-
--- these don't seem to work'
--- vim.lsp.config['omnisharp'] = require(conf_dir .. 'omnisharp')
--- vim.lsp.config['lua_ls'] = require(conf_dir .. 'lua_ls')
--- vim.lsp.config('lua_ls', require(conf_dir .. 'lua_ls'))
+-- configs
+vim.lsp.config['lua_ls'] = require(conf_dir .. 'lua_ls')
