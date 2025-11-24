@@ -4,7 +4,7 @@ return {
   config = function()
     require('toggleterm').setup {
       size = 17,
-      -- alt functionality for below exists in remap.lua
+      -- open terminal in CWD
       open_mapping = [[<A-;>]],
     }
     -- open terminal in the directory of the file
