@@ -49,6 +49,7 @@ vim.lsp.enable('vtsls')
 vim.lsp.enable('bashls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('arduino_language_server')
+vim.lsp.enable('sqlls')
 -- Python
 vim.lsp.enable('basedpyright')
 vim.lsp.enable('ruff')
