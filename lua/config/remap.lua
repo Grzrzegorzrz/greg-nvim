@@ -23,9 +23,7 @@ vim.keymap.set("n", "<leader>w", function()
 end)
 
 -- quick macro
-vim.keymap.set("n", "<C-Q>", "qk")
 vim.keymap.set("n", "q<C-Q>", "qk")
--- tip: usable in visual line mode
 
 -- scroll screen up/down
 vim.keymap.set({ "n", "v" }, "<C-N>", "<C-E>")
@@ -118,6 +116,9 @@ end, { expr = true })
 -- rename all occurences
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
+
+vim.keymap.set("n", "<C-q><C-n>", vim.cmd.cnext)
+vim.keymap.set("n", "<C-q><C-p>", vim.cmd.cprevious)
 
 vim.api.nvim_create_user_command('Redir', function(ctx)
   local result = vim.api.nvim_exec2(ctx.args, { output = true })
