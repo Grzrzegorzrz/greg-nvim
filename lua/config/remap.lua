@@ -102,6 +102,9 @@ vim.keymap.set('i', "<C-r>", "<C-r>\"")
 -- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
+-- jump to closing (and matching) bracket
+vim.keymap.set("n", ",,", "%")
+
 -- indent in insert mode
 vim.keymap.set("i", "<C-,>", function()
   local indent = vim.opt.shiftwidth:get();

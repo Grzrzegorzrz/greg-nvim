@@ -23,14 +23,14 @@ return {
         end,
       },
       keymaps = {
-        ["<S-l>"] = "actions.select",
-        ["<leader>r"] = "actions.refresh", -- temp
+        ["<C-l>"] = "actions.select",
+        ["L"] = "actions.refresh", -- temp
         ["<C-h>"] = "actions.parent",
         [","] = { "actions.change_sort", mode = "n" },
         ["<ESC>"] = { "actions.close", mode = "n" },
       },
       skip_confirm_for_simple_edits = false,
     })
-    vim.keymap.set("n", "<S-h>", vim.cmd.Oil)
+    vim.keymap.set("n", "<C-h>", vim.cmd.Oil)
   end,
 }
