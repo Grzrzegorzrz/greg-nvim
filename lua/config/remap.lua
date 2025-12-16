@@ -166,13 +166,13 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
         ['b'] = 'backlinks',
         [';'] = 'tags',
         ['\'']= 'search',
-        ['c'] = 'toc',
         ['m'] = '',
       },
       ['misc'] = {
         ['t'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>gg/tags:<CR>eea <ESC>C<CR>  - ", true, false, true), "n", false) end,
         ['n'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":Obsidian link_new ", true, false, true), 'n', false) end,
         ['i'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":Obsidian link ", true, false, true), 'n', false) end,
+        ['c'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("ygv`><ESC>a]]<ESC>gv<ESC>`<i[[<ESC>l:Obsidian follow_link<CR>y<CR>:w<CR>gg2j$ciW<CR>  - <ESC>p<ESC>Go", true, false, true), "v", false) end,
       }
     }
 
