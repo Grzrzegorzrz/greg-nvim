@@ -24,6 +24,7 @@ return {
       },
       keymaps = {
         ["<C-l>"] = "actions.select",
+        ["<leader>cd"] = "actions.cd",
         ["L"] = "actions.refresh", -- temp
         ["<C-h>"] = "actions.parent",
         [","] = { "actions.change_sort", mode = "n" },

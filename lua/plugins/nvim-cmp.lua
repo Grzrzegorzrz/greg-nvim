@@ -38,10 +38,10 @@ M.config = function()
 
       -- up and down movements, pick your poison
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-      ["<C-S-tab>"] = cmp.mapping(cmp.mapping.select_prev_item(),{ 'i', 'c' }),
+      -- ["<C-S-tab>"] = cmp.mapping(cmp.mapping.select_prev_item(),{ 'i', 'c' }),
 
       ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-      ["<C-tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+      -- ["<C-tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     }),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },

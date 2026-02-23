@@ -39,6 +39,7 @@ local buttons = {
       dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
       dashboard.button("n", "  Neovim Configuration", ":e ~/.config/nvim/init.lua <CR> :cd %:p:h <CR>"),
       dashboard.button("h", "  Hyprland Configuration", ":e ~/.config/hypr/hyprland.conf <CR> :cd %:p:h <CR>"),
+      dashboard.button("l", "󰓠  LeetCode", ":Leet<CR>"),
       dashboard.button("A", "󰀫  Alpha", ":e ~/.config/nvim/lua/config/alpha.lua <CR> :cd %:p:h <CR>"),
       dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
     },

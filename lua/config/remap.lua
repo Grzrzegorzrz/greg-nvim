@@ -97,7 +97,7 @@ vim.keymap.set({ 'n', 'v' }, "<A-P>", "\"+P")
 vim.keymap.set('i', "<A-P>", "<ESC>\"+P")
 
 -- paste in insert mode
-vim.keymap.set('i', "<C-r>", "<C-r>\"")
+vim.keymap.set('i', "<C-r><C-r>", "<C-r>\"")
 
 -- makes Ctrl + c match esc behavior
 vim.keymap.set("i", "<C-c>", "<ESC>")
@@ -172,7 +172,7 @@ vim.keymap.set({ "n", "v" }, "<leader>o", function()
         ['t'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>gg/tags:<CR>eea <ESC>C<CR>  - ", true, false, true), "n", false) end,
         ['n'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":Obsidian link_new ", true, false, true), 'n', false) end,
         ['i'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":Obsidian link ", true, false, true), 'n', false) end,
-        ['c'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("ygv`><ESC>a]]<ESC>gv<ESC>`<i[[<ESC>l:Obsidian follow_link<CR>y<CR>:w<CR>gg2j$ciW<CR>  - <ESC>p<ESC>Go", true, false, true), "v", false) end,
+        ['c'] = function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("ygv`><ESC>a]]<ESC>gv<ESC>`<i[[<ESC>l:Obsidian follow_link<CR><CR>:w<CR>gg2j$viWp:w<CR>Go", true, false, true), "v", false) end,
       }
     }
 
