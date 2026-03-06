@@ -118,6 +118,9 @@ end, { expr = true })
 
 -- rename all occurences
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+-- rename all occurences of selected
+vim.keymap.set("v", "<leader>CIW", "\"hy:%s/<C-r>h/<C-r>h/gI<Left><Left><Left>")
+
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
 vim.keymap.set("n", "<C-q><C-n>", vim.cmd.cnext)
