@@ -35,7 +35,7 @@ vim.keymap.set({ "n", "v" }, "<CS-P>", "10<C-Y>")
 vim.keymap.set({ "i", "c" }, "<C-Backspace>", "<C-w>")
 vim.keymap.set({ "i", "c" }, "<C-b>", "<C-w>")
 vim.keymap.set({ "i", "c" }, "<C-Del>", function()
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local _, col = unpack(vim.api.nvim_win_get_cursor(0))
   if col == 0 then
     return "<ESC>cw"
   else
@@ -43,7 +43,7 @@ vim.keymap.set({ "i", "c" }, "<C-Del>", function()
   end
 end, { expr = true })
 vim.keymap.set({ "i", "c" }, "<C-f>", function()
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local _, col = unpack(vim.api.nvim_win_get_cursor(0))
   if col == 0 then
     return "<ESC>cw"
   else
@@ -119,7 +119,7 @@ end, { expr = true })
 -- rename all occurences
 vim.keymap.set("n", "<leader>CIW", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- rename all occurences of selected
-vim.keymap.set("v", "<leader>CIW", "\"hy:%s/<C-r>h/<C-r>h/gI<Left><Left><Left>")
+vim.keymap.set("v", "<leader>CIW", "\"hy:%s/\\V<C-r>h/<C-r>h/gI<Left><Left><Left>")
 
 -- "<leader>ciw" is in after/pluging/lsp as the lsp change variable
 
