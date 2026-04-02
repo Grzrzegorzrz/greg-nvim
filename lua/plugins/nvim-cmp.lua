@@ -27,7 +27,7 @@ M.config = function()
     },
     mapping = cmp.mapping.preset.insert({
       -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
+      -- ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
       ["<C-l>"] = cmp.mapping.confirm({ select = true }),
 
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
