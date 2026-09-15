@@ -48,6 +48,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.hidden = true
 vim.opt.cmdheight = 0  -- 0 hides commandline
 vim.opt.ve = { 'block', 'onemore' }
+vim.opt.showtabline = 0
 vim.diagnostic.enable=true
 
 vim.g.loaded_netrw = 1
