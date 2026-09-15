@@ -29,6 +29,9 @@ return {
         ["<C-h>"] = "actions.parent",
         [","] = { "actions.change_sort", mode = "n" },
         ["<ESC>"] = { "actions.close", mode = "n" },
+        ["gh"] = { "actions.open_cwd", mode = "n" },
+        ["_"] = {},
+        ["-"] = {},
       },
       skip_confirm_for_simple_edits = false,
     })

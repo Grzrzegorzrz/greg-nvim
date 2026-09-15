@@ -17,7 +17,8 @@ return {
         },
         ignore_focus = {},
         always_divide_middle = true,
-        always_show_tabline = true,
+        -- always_show_tabline = true,
+        always_show_tabline = false,
         globalstatus = false,
         refresh = {
           statusline = 100,
@@ -39,8 +40,12 @@ return {
           color = { fg = "#ff9e64" },
           draw_empty = false,
         }},
-
-        lualine_c = {'filename'},
+        lualine_c = {
+          {
+            'tabs',
+            mode = 2
+          }
+        },
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
